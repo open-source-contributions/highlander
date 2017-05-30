@@ -88,3 +88,14 @@ function sequence(...$args)
         }, $x);
     };
 }
+
+/**
+ * store :: (a -> b) -> c -> b
+ */
+function store()
+{
+    $y = null;
+    return static function ($x = null) use (&$y) {
+        return isset($y) ? $y : $y = $x;
+    };
+}

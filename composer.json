@@ -1,0 +1,45 @@
+{
+    "name": "highlander/highlander",
+    "description": "Functional programming helpers",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "functional",
+        "programming",
+        "fp",
+        "arity",
+        "lambda",
+        "point-free",
+        "tacit",
+        "curry",
+        "partial",
+        "compose",
+        "sequence"
+    ],
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Woody Gilk",
+            "email": "woody.gilk@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Highlander\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    }
+}

@@ -24,6 +24,30 @@ function late(callable $fn, ...$args)
 }
 
 /**
+ * part :: a -> b -> a
+ */
+function part()
+{
+    static $p;
+    return $p ? $p : $p = static function () {
+    };
+}
+
+/**
+ * partial :: ?
+ */
+function partial(callable $f, ...$x)
+{
+    return function (...$y) use ($f, $x) {
+        $p = part();
+        $x = array_map(static function ($a) use (&$y, $p) {
+            return $a === $p ? array_shift($y) : $a;
+        }, $x);
+        return $f(...$x);
+    };
+}
+
+/**
  * possibly :: (a -> Bool), (a -> b), (a -> b) -> a -> b
  */
 function possibly(callable $p, callable $a, callable $b)

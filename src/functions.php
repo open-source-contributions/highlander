@@ -12,3 +12,13 @@ function late(callable $fn, ...$args)
         return $fn(...$args);
     };
 }
+
+/**
+ * possibly :: (a -> Bool), (a -> b), (a -> b) -> a -> b
+ */
+function possibly(callable $p, callable $a, callable $b)
+{
+    return function ($x) use ($p, $a, $b) {
+        return $p($x) ? $a($x) : $b($x);
+    };
+}

@@ -23,6 +23,15 @@ function compose(callable $f, callable $g)
 }
 
 /**
+ * curry :: a -> b -> c
+ */
+function curry(callable $f, ...$x) {
+    return static function (...$y) use ($f, $x) {
+        return $f(...array_merge($x, $y));
+    };
+}
+
+/**
  * late :: (a -> c, ...b) -> c
  */
 function late(callable $fn, ...$args)

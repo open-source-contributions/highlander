@@ -42,3 +42,15 @@ function call($a, ...$args)
         return call_user_func(late([$x, $a], ...$args));
     };
 }
+
+/**
+ * sequence :: (...a -> b) -> a -> b
+ */
+function sequence(...$args)
+{
+    return function ($x = null) use ($args) {
+        return \array_reduce($args, static function ($c, $f) {
+            return $f($c);
+        }, $x);
+    };
+}

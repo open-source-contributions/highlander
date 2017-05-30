@@ -3,6 +3,16 @@
 namespace Highlander;
 
 /**
+ * compose :: (b -> c), (a -> b) -> a -> c
+ */
+function compose(callable $f, callable $g)
+{
+    return function ($x) use ($f, $g) {
+        return $f($g($x));
+    };
+}
+
+/**
  * late :: (a -> c, ...b) -> c
  */
 function late(callable $fn, ...$args)

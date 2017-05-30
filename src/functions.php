@@ -3,6 +3,16 @@
 namespace Highlander;
 
 /**
+ * consistent :: a -> a
+ */
+function consistent($x)
+{
+    return static function () use ($x) {
+        return $x;
+    };
+}
+
+/**
  * compose :: (b -> c), (a -> b) -> a -> c
  */
 function compose(callable $f, callable $g)
